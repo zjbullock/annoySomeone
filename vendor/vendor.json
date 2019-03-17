@@ -1,0 +1,25 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "R53kT9nIE63z2D+pNw8rj8+njEM=",
+			"path": "github.com/gorilla/handlers",
+			"revision": "ac6d24f88de4584385a0cb3a88f953d08a2f7a05",
+			"revisionTime": "2019-02-27T19:34:32Z"
+		},
+		{
+			"checksumSHA1": "4buQslF20IWRfGgbUnYLgNI5Zlo=",
+			"path": "github.com/gorilla/mux",
+			"revision": "c5c6c98bc25355028a63748a498942a6398ccd22",
+			"revisionTime": "2019-03-16T13:32:43Z"
+		},
+		{
+			"checksumSHA1": "h5es1TGOiAnuUe/mGw5T9MpzdG4=",
+			"path": "github.com/juju/loggo",
+			"revision": "d976af380377adda50b2d34279f1dec3507504ac",
+			"revisionTime": "2019-02-12T22:34:46Z"
+		}
+	],
+	"rootPath": "annoySomeone"
+}
