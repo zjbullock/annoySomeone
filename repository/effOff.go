@@ -42,6 +42,10 @@ func (e *effOff) GetMeanStatement(who model.Who) (*string, error) {
 	if err != nil {
 		return nil, errors.Wrap(err, "error contacting foaas")
 	}
+	if resp.StatusCode != 200 {
+		mean := "I couldn't get a mean text cuz foaas is being dumb.  My peepee hurt ;("
+		return &mean, nil
+	}
 	e.log.Infof("Repository - EffOff - Successfully Get a Response")
 	defer resp.Body.Close()
 	var m model.EffOff
