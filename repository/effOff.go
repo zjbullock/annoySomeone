@@ -51,7 +51,7 @@ func (e *effOff) GetMeanStatement(who model.Who) (*string, error) {
 	if err != nil {
 		return nil, errors.Wrapf(err, "error decoding response into EffOff struct")
 	}
-	mean := m.String()
+	mean := fmt.Sprint(m.Message, m.Subtitle)
 	e.log.Infof("Repository - EffOff - Got Response %s", mean)
 	return &mean, nil
 }

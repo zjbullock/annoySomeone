@@ -15,12 +15,14 @@ type Mean interface {
 type mean struct {
 	log loggo.Logger
 	eff repository.EffOff
+	sms repository.SMS
 }
 
-func NewMean(l loggo.Logger, eff repository.EffOff) Mean {
+func NewMean(l loggo.Logger, eff repository.EffOff, sms repository.SMS) Mean {
 	return &mean{
 		log: l,
 		eff: eff,
+		sms: sms,
 	}
 }
 
@@ -30,11 +32,15 @@ func (m *mean) SendMean(who model.Who) (resp *string, err error) {
 		m.log.Infof("Randomly generated point with chosen point: %s", point)
 		who.Point = &point
 	}
-	resp, err = m.eff.GetMeanStatement(who)
+	mean, err := m.eff.GetMeanStatement(who)
 	if err != nil {
 		return nil, errors.Wrapf(err, "error getting mean statement")
 	}
-	//Todo: Find API to send as text message
+
+	resp, err = m.sms.SendText(who.Number, *mean)
+	if err != nil {
+		return nil, errors.Wrapf(err, "error sending mean text")
+	}
 	return
 }
 

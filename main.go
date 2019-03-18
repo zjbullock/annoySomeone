@@ -21,8 +21,9 @@ func init() {
 	l.SetLogLevel(loggo.INFO)
 	//Create Repositories
 	eff := repository.NewEffOff(l, client, "https://www.foaas.com")
+	sms := repository.NewSMS(l, client, "https://api.twilio.com")
 	//Create Services
-	mean := service.NewMean(l, eff)
+	mean := service.NewMean(l, eff, sms)
 	ctx = context.WithValue(ctx, global.MeanService, mean)
 }
 

@@ -6,9 +6,10 @@ import (
 )
 
 type Who struct {
-	Point *string `json:"point, omitempty"`
-	To    string  `json:"to"`
-	From  string  `json:"from"`
+	Point  *string `json:"point, omitempty"`
+	To     string  `json:"to"`
+	From   string  `json:"from"`
+	Number string  `json:"phoneNumber"`
 }
 
 func (w *Who) String() string {
