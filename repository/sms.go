@@ -1,6 +1,7 @@
 package repository
 
 import (
+	"annoySomeone/model"
 	"annoySomeone/repository/helper"
 	"fmt"
 	"github.com/juju/loggo"
@@ -12,7 +13,7 @@ import (
 )
 
 type SMS interface {
-	SendText(number, message string) (*string, error)
+	SendText(number, message string, secrets *model.Secrets) (*string, error)
 }
 
 type sms struct {
@@ -29,21 +30,25 @@ func NewSMS(l loggo.Logger, client http.Client, url string) SMS {
 	}
 }
 
-func (s *sms) SendText(number, message string) (*string, error) {
+func (s *sms) SendText(number, message string, secrets *model.Secrets) (*string, error) {
 	s.log.Infof("Repository - SMS - Getting Secret Account Info")
-	account, err := helper.GetSecrets(s.log)
-	if err != nil {
-		return nil, errors.Wrapf(err, "error getting secrets")
+	if secrets == nil {
+		s, err := helper.GetSecrets(s.log)
+		if err != nil {
+			return nil, errors.Wrapf(err, "error getting secrets")
+		}
+		secrets = s
 	}
+
 	msg := url.Values{}
 	msg.Set("To", number)
-	msg.Set("From", account.Number)
+	msg.Set("From", secrets.Number)
 	msg.Set("Body", message)
 	msgDataReader := *strings.NewReader(msg.Encode())
 
 	s.log.Infof("Repository - SMS - Formatting Get Request")
-	req, err := fmtRequest(http.MethodPost, formatTwilioRequest(s.url, account.SID), &msgDataReader)
-	req.SetBasicAuth(account.SID, account.AuthToken)
+	req, err := fmtRequest(http.MethodPost, formatTwilioRequest(s.url, secrets.SID), &msgDataReader)
+	req.SetBasicAuth(secrets.SID, secrets.AuthToken)
 	req.Header.Add("Accept", "application/json")
 	req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
 	s.log.Infof("Repository - SMS - Making request")

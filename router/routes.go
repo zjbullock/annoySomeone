@@ -6,7 +6,10 @@ import (
 	"net/http"
 )
 
-var path = "/mean"
+var (
+	mean = "/mean"
+	milk = "/milk"
+)
 
 type route struct {
 	Name        string
@@ -20,8 +23,14 @@ func Routes(ctx context.Context) []route {
 		{
 			Name:        "Mean",
 			Method:      http.MethodPost,
-			Pattern:     path,
+			Pattern:     mean,
 			HandlerFunc: handlers.BeMean(ctx),
+		},
+		{
+			Name:        "Milk",
+			Method:      http.MethodPost,
+			Pattern:     milk,
+			HandlerFunc: handlers.GotMilk(ctx),
 		},
 	}
 }

@@ -37,7 +37,7 @@ func (m *mean) SendMean(who model.Who) (resp *string, err error) {
 		return nil, errors.Wrapf(err, "error getting mean statement")
 	}
 
-	resp, err = m.sms.SendText(who.Number, *mean)
+	resp, err = m.sms.SendText(who.Number, *mean, nil)
 	if err != nil {
 		return nil, errors.Wrapf(err, "error sending mean text")
 	}

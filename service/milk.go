@@ -1,1 +1,47 @@
 package service
+
+import (
+	"annoySomeone/model"
+	"annoySomeone/repository"
+	"annoySomeone/repository/helper"
+	"github.com/juju/loggo"
+	"github.com/pkg/errors"
+)
+
+type Milk interface {
+	SendMilk(who model.Who) (resp *string, err error)
+}
+
+type milk struct {
+	log   loggo.Logger
+	wally repository.Wally
+	sms   repository.SMS
+}
+
+func NewMilk(l loggo.Logger, wally repository.Wally, sms repository.SMS) Milk {
+	return &milk{
+		log:   l,
+		wally: wally,
+		sms:   sms,
+	}
+}
+
+const goatMilk = "26931047"
+
+func (m *milk) SendMilk(who model.Who) (resp *string, err error) {
+	secrets, err := helper.GetSecrets(m.log)
+	if err != nil {
+		return nil, errors.Wrapf(err, "error getting secrets")
+	}
+
+	milk, err := m.wally.GetMilkPrice(goatMilk, secrets.Wally)
+	if err != nil {
+		return nil, errors.Wrapf(err, "error getting milk price")
+	}
+
+	resp, err = m.sms.SendText(who.Number, *milk, secrets)
+	if err != nil {
+		return nil, errors.Wrapf(err, "error sending milk text")
+	}
+	return
+}
