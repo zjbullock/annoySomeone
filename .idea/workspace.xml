@@ -7,15 +7,6 @@
     <list default="true" id="8e478bd6-cfb2-4c3b-972c-c4b008bdfe20" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/annoySomeone.exe" beforeDir="false" afterPath="$PROJECT_DIR$/annoySomeone.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/constant.go" beforeDir="false" afterPath="$PROJECT_DIR$/global/constant.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/secrets.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/secrets.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repository/helper/secrets.go" beforeDir="false" afterPath="$PROJECT_DIR$/repository/helper/secrets.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repository/milk.go" beforeDir="false" afterPath="$PROJECT_DIR$/repository/wally.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repository/sms.go" beforeDir="false" afterPath="$PROJECT_DIR$/repository/sms.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/handlers/handlers.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/handlers/handlers.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/routes.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/routes.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/mean.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/mean.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/milk.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/milk.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -86,10 +77,10 @@
     <session id="234055080">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.0" value="2" />
-          <entry key="project.open.time.3" value="4" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.open.time.3" value="5" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -148,9 +139,6 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="697">
                   <caret line="50" column="49" selection-start-line="50" selection-start-column="49" selection-end-line="50" selection-end-column="49" />
-                  <folding>
-                    <element signature="e#20#67#0" expanded="true" />
-                  </folding>
                 </state>
               </provider>
             </entry>
@@ -180,8 +168,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/service/milk.go">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="510">
-                  <caret line="36" column="29" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
+                <state relative-caret-position="408">
+                  <caret line="30" column="52" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
                 </state>
               </provider>
             </entry>
@@ -233,9 +221,9 @@
         <option value="$PROJECT_DIR$/repository/helper/secrets.go" />
         <option value="$PROJECT_DIR$/repository/sms.go" />
         <option value="$PROJECT_DIR$/service/mean.go" />
-        <option value="$PROJECT_DIR$/service/milk.go" />
         <option value="$PROJECT_DIR$/main.go" />
         <option value="$PROJECT_DIR$/repository/wally.go" />
+        <option value="$PROJECT_DIR$/service/milk.go" />
       </list>
     </option>
   </component>
@@ -359,7 +347,7 @@
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.066375196" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.066772655" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -433,9 +421,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-          <folding>
-            <element signature="e#15#49#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -464,9 +449,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="e#15#49#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -477,6 +459,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/service/mean.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
@@ -484,10 +473,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/router/handlers/handlers.go">
+    <entry file="file://$PROJECT_DIR$/repository/wally.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="40" column="75" selection-start-line="40" selection-start-column="75" selection-end-line="40" selection-end-column="75" />
+        <state relative-caret-position="697">
+          <caret line="50" column="49" selection-start-line="50" selection-start-column="49" selection-end-line="50" selection-end-column="49" />
         </state>
       </provider>
     </entry>
@@ -498,27 +487,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/router/handlers/handlers.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="40" column="75" selection-start-line="40" selection-start-column="75" selection-end-line="40" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/service/milk.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="36" column="29" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/repository/wally.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="50" column="49" selection-start-line="50" selection-start-column="49" selection-end-line="50" selection-end-column="49" />
-          <folding>
-            <element signature="e#20#67#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="408">
+          <caret line="30" column="52" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
         </state>
       </provider>
     </entry>

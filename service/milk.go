@@ -26,7 +26,7 @@ func NewMilk(l loggo.Logger, wally repository.Wally, sms repository.SMS) Milk {
 	}
 }
 
-const goatMilk = "26931047"
+const goatMilk = "47094270"
 
 func (m *milk) SendMilk(who model.Who) (resp *string, err error) {
 	secrets, err := helper.GetSecrets(m.log)
