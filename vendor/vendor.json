@@ -3,6 +3,18 @@
 	"ignore": "test",
 	"package": [
 		{
+			"checksumSHA1": "rXqzjkfStc6C8d7DDOXrmAv/fH8=",
+			"path": "github.com/PuerkitoBio/goquery",
+			"revision": "3dcf72e6c17f694381a21592651ca1464ded0e10",
+			"revisionTime": "2019-01-09T23:07:04Z"
+		},
+		{
+			"checksumSHA1": "RIh1dcM7jKzdb/ZNYrKn9SaIaCw=",
+			"path": "github.com/andybalholm/cascadia",
+			"revision": "680b6a57bda4f657485ad44bdea42342ead737bc",
+			"revisionTime": "2018-10-12T15:44:24Z"
+		},
+		{
 			"checksumSHA1": "R53kT9nIE63z2D+pNw8rj8+njEM=",
 			"path": "github.com/gorilla/handlers",
 			"revision": "ac6d24f88de4584385a0cb3a88f953d08a2f7a05",
@@ -25,6 +37,22 @@
 			"path": "github.com/pkg/errors",
 			"revision": "27936f6d90f9c8e1145f11ed52ffffbfdb9e0af7",
 			"revisionTime": "2019-02-27T00:00:51Z"
+		},
+		{
+			"checksumSHA1": "qyU58wqixJNIOwqz2CXE2eMBNTk=",
+			"path": "golang.org/x/net/html",
+			"revision": "addf6b3196f61cd44ce5a76657913698c73479d0",
+			"revisionTime": "2019-03-22T03:00:09Z"
+		},
+		{
+			"checksumSHA1": "xwhqe/igHQrY3IhqDwzo6j7qpm8=",
+			"path": "golang.org/x/net/html/atom",
+			"revision": "addf6b3196f61cd44ce5a76657913698c73479d0",
+			"revisionTime": "2019-03-22T03:00:09Z"
+		},
+		{
+			"path": "net/html",
+			"revision": ""
 		}
 	],
 	"rootPath": "annoySomeone"
