@@ -5,5 +5,5 @@ type key int
 const (
 	MeanService key = iota
 	MilkService
-	PORT string = ":8080"
+	Port = ":8080"
 )

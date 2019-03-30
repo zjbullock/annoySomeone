@@ -36,6 +36,6 @@ func main() {
 	allowedOrigins := handlers.AllowedOrigins([]string{"*"})
 	allowedMethods := handlers.AllowedMethods([]string{"POST"})
 	router := router.NewRouter(ctx)
-	l.Infof("Listening on port %s", global.PORT)
-	l.Criticalf(http.ListenAndServe(global.PORT, handlers.CORS(allowedOrigins, allowedMethods, allowedHeaders)(router)).Error())
+	l.Infof("Listening on port %s", global.Port)
+	l.Criticalf(http.ListenAndServe(global.Port, handlers.CORS(allowedOrigins, allowedMethods, allowedHeaders)(router)).Error())
 }

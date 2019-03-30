@@ -52,34 +52,7 @@ func (w *wally) GetMilkPrice(item, wallyKey string) (*string, error) {
 		title := item.Text()
 		m["salePrice"] = title
 	})
-
 	m["name"] = mulk
-
-	//z := html.NewTokenizer(resp.Body)
-	//for {
-	//	tt := z.Next()
-	//
-	//	switch {
-	//	case tt == html.ErrorToken:
-	//		// End of the document, we're done
-	//		return nil, errors.Wrapf(err, "end of document, no milk price")
-	//	case tt == html.StartTagToken:
-	//		t := z.Token()
-	//
-	//		isAnchor := t.Data == "span"
-	//		if isAnchor {
-	//			fmt.Println("We found a span!")
-	//			fmt.Println("span token: ", t.String())
-	//		}
-	//	}
-	//}
-
-	//w.log.Infof("Repository - Wally - Now Decoding Response Body")
-	//err = json.NewDecoder(resp.Body).Decode(&m)
-	//if err != nil {
-	//	return nil, errors.Wrapf(err, "error decoding response into map")
-	//}
-
 	milk := string(fmt.Sprintf(`The price of "%s" is %s`, m["name"], m["salePrice"]))
 	w.log.Infof("Repository - Wally - Got Response %s", milk)
 	return &milk, nil
