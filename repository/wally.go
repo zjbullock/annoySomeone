@@ -9,7 +9,7 @@ import (
 )
 
 type Wally interface {
-	GetMilkPrice(item, wallyKey string) (*string, error)
+	GetMilkPrice(item, wallyKey, from string) (*string, error)
 }
 
 type wally struct {
@@ -30,7 +30,7 @@ const (
 	mulk = "Great Value Whole Milk, 1 Gallon, 128 Fl. Oz."
 )
 
-func (w *wally) GetMilkPrice(item, wallyKey string) (*string, error) {
+func (w *wally) GetMilkPrice(item, wallyKey, from string) (*string, error) {
 	w.log.Infof("Repository - Wally - Formatting Get Request")
 	req, err := fmtRequest(http.MethodGet, formatMilkRequest(w.url, item), nil)
 	if err != nil {
@@ -48,39 +48,13 @@ func (w *wally) GetMilkPrice(item, wallyKey string) (*string, error) {
 
 	doc, err := goquery.NewDocumentFromReader(resp.Body)
 
-	doc.Find(".price-group").Each(func(index int, item *goquery.Selection) {
-		title := item.Text()
-		m["salePrice"] = title
+	doc.Find(".prod-PriceHero").Each(func(index int, div *goquery.Selection) {
+		div.Find(".price-group").Each(func(index int, item *goquery.Selection) {
+			m["salePrice"] = item.Text()
+		})
 	})
-
 	m["name"] = mulk
-
-	//z := html.NewTokenizer(resp.Body)
-	//for {
-	//	tt := z.Next()
-	//
-	//	switch {
-	//	case tt == html.ErrorToken:
-	//		// End of the document, we're done
-	//		return nil, errors.Wrapf(err, "end of document, no milk price")
-	//	case tt == html.StartTagToken:
-	//		t := z.Token()
-	//
-	//		isAnchor := t.Data == "span"
-	//		if isAnchor {
-	//			fmt.Println("We found a span!")
-	//			fmt.Println("span token: ", t.String())
-	//		}
-	//	}
-	//}
-
-	//w.log.Infof("Repository - Wally - Now Decoding Response Body")
-	//err = json.NewDecoder(resp.Body).Decode(&m)
-	//if err != nil {
-	//	return nil, errors.Wrapf(err, "error decoding response into map")
-	//}
-
-	milk := string(fmt.Sprintf(`The price of "%s" is %s`, m["name"], m["salePrice"]))
+	milk := string(fmt.Sprintf(`The price of "%s" is %s, - %s`, m["name"], m["salePrice"], from))
 	w.log.Infof("Repository - Wally - Got Response %s", milk)
 	return &milk, nil
 
