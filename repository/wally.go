@@ -48,9 +48,10 @@ func (w *wally) GetMilkPrice(item, wallyKey, from string) (*string, error) {
 
 	doc, err := goquery.NewDocumentFromReader(resp.Body)
 
-	doc.Find(".price-group").Each(func(index int, item *goquery.Selection) {
-		title := item.Text()
-		m["salePrice"] = title
+	doc.Find(".prod-PriceHero").Each(func(index int, div *goquery.Selection) {
+		div.Find(".price-group").Each(func(index int, item *goquery.Selection) {
+			m["salePrice"] = item.Text()
+		})
 	})
 	m["name"] = mulk
 	milk := string(fmt.Sprintf(`The price of "%s" is %s, - %s`, m["name"], m["salePrice"], from))

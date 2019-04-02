@@ -5,21 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8e478bd6-cfb2-4c3b-972c-c4b008bdfe20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/datasource/datasource.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/repository/effOff_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/repository/helper/secrets_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/repository/sms_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/repository/wally_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/router/handlers/handlers_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/router/router_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/server.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/mean_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/milk_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/annoySomeone.exe" beforeDir="false" afterPath="$PROJECT_DIR$/annoySomeone.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/repository/wally.go" beforeDir="false" afterPath="$PROJECT_DIR$/repository/wally.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/milk.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/milk.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/vendor.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/vendor.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -99,14 +87,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitignore" value="8" />
-          <entry key="go" value="9631" />
+          <entry key="go" value="9916" />
           <entry key="json" value="1" />
           <entry key="yml" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Go" value="9631" />
+          <entry key="Go" value="9916" />
           <entry key="JSON" value="1" />
           <entry key="PLAIN_TEXT" value="8" />
           <entry key="YAML" value="14" />
@@ -155,8 +143,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/repository/wally.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
-              <caret line="55" column="95" selection-start-line="55" selection-start-column="95" selection-end-line="55" selection-end-column="95" />
+            <state relative-caret-position="612">
+              <caret line="51" selection-start-line="51" selection-end-line="51" />
+              <folding>
+                <element signature="e#20#133#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -192,7 +183,7 @@
         <entry file="file://$PROJECT_DIR$/datasource/datasource.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
-              <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+              <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -393,7 +384,7 @@
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1764706" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1764706" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -405,7 +396,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.23712948" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.23712948" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -603,7 +594,7 @@
     <entry file="file://$PROJECT_DIR$/datasource/datasource.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -637,8 +628,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/repository/wally.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="55" column="95" selection-start-line="55" selection-start-column="95" selection-end-line="55" selection-end-column="95" />
+        <state relative-caret-position="612">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
+          <folding>
+            <element signature="e#20#133#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
