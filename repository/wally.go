@@ -9,7 +9,7 @@ import (
 )
 
 type Wally interface {
-	GetMilkPrice(item, wallyKey string) (*string, error)
+	GetMilkPrice(item, wallyKey, from string) (*string, error)
 }
 
 type wally struct {
@@ -30,7 +30,7 @@ const (
 	mulk = "Great Value Whole Milk, 1 Gallon, 128 Fl. Oz."
 )
 
-func (w *wally) GetMilkPrice(item, wallyKey string) (*string, error) {
+func (w *wally) GetMilkPrice(item, wallyKey, from string) (*string, error) {
 	w.log.Infof("Repository - Wally - Formatting Get Request")
 	req, err := fmtRequest(http.MethodGet, formatMilkRequest(w.url, item), nil)
 	if err != nil {
@@ -53,7 +53,7 @@ func (w *wally) GetMilkPrice(item, wallyKey string) (*string, error) {
 		m["salePrice"] = title
 	})
 	m["name"] = mulk
-	milk := string(fmt.Sprintf(`The price of "%s" is %s`, m["name"], m["salePrice"]))
+	milk := string(fmt.Sprintf(`The price of "%s" is %s, - %s`, m["name"], m["salePrice"], from))
 	w.log.Infof("Repository - Wally - Got Response %s", milk)
 	return &milk, nil
 
