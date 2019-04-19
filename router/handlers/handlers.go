@@ -37,14 +37,20 @@ func GotMilk(ctx context.Context) http.HandlerFunc {
 		req := json.NewDecoder(r.Body)
 		var who model.Who
 		req.Decode(&who)
+		if len(who.Number) != 10 {
+			http.Error(w, fmt.Sprint("Length of phone number is not 10 characters."), http.StatusBadRequest)
+			return
+		}
 
 		resp, err := ctx.Value(global.MilkService).(service.Milk).SendMilk(who)
 		if err != nil {
 			http.Error(w, fmt.Sprint(err), http.StatusInternalServerError)
+			return
 		}
 
 		w.WriteHeader(http.StatusOK)
 		w.Header().Add("content-type", "application/json")
 		fmt.Fprintf(w, *resp)
+		return
 	}
 }

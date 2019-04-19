@@ -10,7 +10,7 @@ import (
 )
 
 func GetSecrets(log loggo.Logger) (*model.Secrets, error) {
-	file, err := os.Open("../secrets/secrets.json")
+	file, err := os.Open("./secrets/secrets.json")
 	if err != nil {
 		return nil, errors.Wrapf(err, "error getting twilio stuff")
 	}
