@@ -35,7 +35,6 @@ func (e *effOff) GetMeanStatement(who model.Who) (*string, error) {
 	if err != nil {
 		return nil, errors.Wrapf(err, "error formatting request")
 	}
-
 	req.Header.Set("Accept", "application/json")
 	e.log.Infof("Repository - EffOff - Sending Get Request")
 	resp, err := e.client.Do(req)
