@@ -45,7 +45,6 @@ func (s *sms) SendText(number, message string, secrets *model.Secrets) (*string,
 	msg.Set("From", secrets.Number)
 	msg.Set("Body", message)
 	msgDataReader := *strings.NewReader(msg.Encode())
-
 	s.log.Infof("Repository - SMS - Formatting Get Request")
 	req, err := fmtRequest(http.MethodPost, formatTwilioRequest(s.url, secrets.SID), &msgDataReader)
 	req.SetBasicAuth(secrets.SID, secrets.AuthToken)
