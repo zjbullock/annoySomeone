@@ -39,7 +39,7 @@ func (s *sms) SendText(number, message string, secrets *model.Secrets) (*string,
 		}
 		secrets = s
 	}
-
+	number = "+1" + number
 	msg := url.Values{}
 	msg.Set("To", number)
 	msg.Set("From", secrets.Number)
