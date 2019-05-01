@@ -41,6 +41,10 @@ func GotMilk(ctx context.Context) http.HandlerFunc {
 			http.Error(w, fmt.Sprint("Length of phone number is not 10 characters."), http.StatusBadRequest)
 			return
 		}
+		if len(who.ZipCode) == 0 {
+			http.Error(w, fmt.Sprint("No Zipcode provided"), http.StatusBadRequest)
+			return
+		}
 
 		resp, err := ctx.Value(global.MilkService).(service.Milk).SendMilk(who)
 		if err != nil {

@@ -34,7 +34,7 @@ func (m *milk) SendMilk(who model.Who) (resp *string, err error) {
 		return nil, errors.Wrapf(err, "error getting secrets")
 	}
 
-	milk, err := m.wally.GetMilkPrice(greatValue, secrets.Wally, who.From)
+	milk, err := m.wally.GetMilkPrice(greatValue, secrets.Wally, who.ZipCode, who.From)
 	if err != nil {
 		return nil, errors.Wrapf(err, "error getting milk price")
 	}

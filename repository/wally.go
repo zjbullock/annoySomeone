@@ -1,6 +1,9 @@
 package repository
 
 import (
+	"annoySomeone/model"
+	"bytes"
+	"encoding/json"
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
 	"github.com/juju/loggo"
@@ -9,7 +12,7 @@ import (
 )
 
 type Wally interface {
-	GetMilkPrice(item, wallyKey, from string) (*string, error)
+	GetMilkPrice(item, wallyKey, zipCode, from string) (*string, error)
 }
 
 type wally struct {
@@ -30,11 +33,38 @@ const (
 	mulk = "Great Value Whole Milk, 1 Gallon, 128 Fl. Oz."
 )
 
-func (w *wally) GetMilkPrice(item, wallyKey, from string) (*string, error) {
+func (w *wally) GetMilkPrice(item, wallyKey, zipCode, from string) (*string, error) {
+	w.log.Infof("Repository - Wally - Formatting Put Request")
+	locationData := &model.Location{
+		PostalCode:    zipCode,
+		ResponseGroup: "STOREMETA",
+		StoreMeta:     true,
+		Plus:          false,
+	}
+	locDataReader, err := json.Marshal(locationData)
+	if err != nil {
+		return nil, errors.Wrapf(err, "error marshalling data")
+	}
+	locationRequest, err := fmtRequest(http.MethodPut, w.url+"/account/api/location", bytes.NewBuffer(locDataReader))
+	if err != nil {
+		return nil, errors.Wrapf(err, "error formatting location request")
+	}
+	locResp, err := w.client.Do(locationRequest)
+	if locResp.StatusCode != 200 {
+		milk := "Couldn't get the location, I cri"
+		return &milk, nil
+	}
+	w.log.Infof("Repository - Wally - Successfully get location response")
+	defer locResp.Body.Close()
 	w.log.Infof("Repository - Wally - Formatting Get Request")
 	req, err := fmtRequest(http.MethodGet, formatMilkRequest(w.url, item), nil)
 	if err != nil {
-		return nil, errors.Wrapf(err, "error formatting request")
+		return nil, errors.Wrapf(err, "error formatting milk price request")
+	}
+	for _, cookie := range locResp.Cookies() {
+		if cookie.Name == "location-data" {
+			req.AddCookie(cookie)
+		}
 	}
 	w.log.Infof("Repository - EffOff - Sending Get Request")
 	resp, err := w.client.Do(req)
@@ -42,7 +72,7 @@ func (w *wally) GetMilkPrice(item, wallyKey, from string) (*string, error) {
 		milk := "I couldn't get the price of milk.  My peepee hurt ;("
 		return &milk, nil
 	}
-	w.log.Infof("Repository - Wally - Successfully Get a Response")
+	w.log.Infof("Repository - Wally - Successfully get milk response")
 	defer resp.Body.Close()
 	m := make(map[string]interface{})
 
@@ -61,5 +91,5 @@ func (w *wally) GetMilkPrice(item, wallyKey, from string) (*string, error) {
 }
 
 func formatMilkRequest(url, item string) string {
-	return fmt.Sprintf("%s/%s", url, item)
+	return fmt.Sprintf("%s/ip/%s", url, item)
 }

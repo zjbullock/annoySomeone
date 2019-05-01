@@ -22,7 +22,7 @@ func init() {
 	//Create Repositories
 	eff := repository.NewEffOff(l, client, "https://www.foaas.com")
 	sms := repository.NewSMS(l, client, "https://api.twilio.com")
-	wally := repository.NewWally(l, client, "https://www.walmart.com/ip/")
+	wally := repository.NewWally(l, client, "https://www.walmart.com")
 	//Create Services
 	mean := service.NewMean(l, eff, sms)
 	milk := service.NewMilk(l, wally, sms)
