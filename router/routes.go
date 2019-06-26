@@ -7,8 +7,9 @@ import (
 )
 
 var (
-	mean = "/mean"
-	milk = "/milk"
+	mean     = "/mean"
+	textMilk = "/milk"
+	getMilk  = "/getMilk/{zipCode}"
 )
 
 type route struct {
@@ -21,15 +22,21 @@ type route struct {
 func Routes(ctx context.Context) []route {
 	return []route{
 		{
-			Name:        "Mean",
+			Name:        "Text Mean",
 			Method:      http.MethodPost,
 			Pattern:     mean,
 			HandlerFunc: handlers.BeMean(ctx),
 		},
 		{
-			Name:        "Milk",
+			Name:        "Text Milk",
 			Method:      http.MethodPost,
-			Pattern:     milk,
+			Pattern:     textMilk,
+			HandlerFunc: handlers.TextMilk(ctx),
+		},
+		{
+			Name:        "Get Milk",
+			Method:      http.MethodGet,
+			Pattern:     getMilk,
 			HandlerFunc: handlers.GotMilk(ctx),
 		},
 	}

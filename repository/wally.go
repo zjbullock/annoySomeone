@@ -12,7 +12,7 @@ import (
 )
 
 type Wally interface {
-	GetMilkPrice(item, wallyKey, zipCode, from string) (*string, error)
+	GetMilkPrice(item, zipCode string) (*string, error)
 }
 
 type wally struct {
@@ -33,7 +33,7 @@ const (
 	mulk = "Great Value Whole Milk, 1 Gallon, 128 Fl. Oz."
 )
 
-func (w *wally) GetMilkPrice(item, wallyKey, zipCode, from string) (*string, error) {
+func (w *wally) GetMilkPrice(item, zipCode string) (*string, error) {
 	w.log.Infof("Repository - Wally - Formatting Put Request")
 	locationData := &model.Location{
 		PostalCode:    zipCode,
@@ -83,8 +83,12 @@ func (w *wally) GetMilkPrice(item, wallyKey, zipCode, from string) (*string, err
 			m["salePrice"] = item.Text()
 		})
 	})
+	if m["salePrice"] == nil {
+		w.log.Infof("No sales price retrieved.  Unable to continue")
+		return nil, errors.New("no sales price able to be scraped.")
+	}
 	m["name"] = mulk
-	milk := string(fmt.Sprintf(`The price of "%s" is %s, - %s`, m["name"], m["salePrice"], from))
+	milk := string(fmt.Sprintf(`The price of "%s" is %s at zipcode %s`, m["name"], m["salePrice"], zipCode))
 	w.log.Infof("Repository - Wally - Got Response %s", milk)
 	return &milk, nil
 

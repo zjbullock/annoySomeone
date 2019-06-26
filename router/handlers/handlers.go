@@ -6,24 +6,29 @@ import (
 	"annoySomeone/service"
 	"context"
 	"encoding/json"
-	"flag"
 	"fmt"
+	"github.com/gorilla/mux"
+	"github.com/juju/loggo"
 	"net/http"
+)
+
+var (
+	l loggo.Logger
 )
 
 func BeMean(ctx context.Context) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		flag.Parse()
-
 		req := json.NewDecoder(r.Body)
 		var who model.Who
-		req.Decode(&who)
-
+		err := req.Decode(&who)
+		if err != nil {
+			l.Errorf("Error decoding request body: %v", who)
+			return
+		}
 		resp, err := ctx.Value(global.MeanService).(service.Mean).SendMean(who)
 		if err != nil {
 			http.Error(w, fmt.Sprint(err), http.StatusInternalServerError)
 		}
-
 		w.WriteHeader(http.StatusOK)
 		w.Header().Add("content-type", "application/json")
 		fmt.Fprintf(w, *resp)
@@ -32,11 +37,35 @@ func BeMean(ctx context.Context) http.HandlerFunc {
 
 func GotMilk(ctx context.Context) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		flag.Parse()
+		params := mux.Vars(r)
+		if params["zipCode"] == "" {
+			l.Errorf("Error getting zipCode")
+			return
+		}
+		zipCode := params["zipCode"]
+		l.Infof("zipCode: %v", zipCode)
+		resp, err := ctx.Value(global.MilkService).(service.Milk).GetMilk(zipCode)
+		if err != nil {
+			http.Error(w, fmt.Sprint(err), http.StatusInternalServerError)
+			return
+		}
 
+		w.WriteHeader(http.StatusOK)
+		w.Header().Add("content-type", "application/json")
+		fmt.Fprintf(w, *resp)
+		return
+	}
+}
+
+func TextMilk(ctx context.Context) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
 		req := json.NewDecoder(r.Body)
 		var who model.Who
-		req.Decode(&who)
+		err := req.Decode(&who)
+		if err != nil {
+			l.Errorf("Error decoding request body: %v", who)
+			return
+		}
 		if len(who.Number) != 10 {
 			http.Error(w, fmt.Sprint("Length of phone number is not 10 characters."), http.StatusBadRequest)
 			return
